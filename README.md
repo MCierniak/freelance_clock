@@ -2,7 +2,7 @@
 
 ## Download
 
-- **[Windows (v0.1)](https://www.google.com "v0.1")**
+- **[Windows 10 x64 (v0.1)](https://github.com/MCierniak/freelance_clock/blob/master/dist/Freelance%20Clock%20v0p1%20Win10%20x64.exe?raw=true "v0.1")**
 
 ## Description
 
