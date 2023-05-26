@@ -3,3 +3,4 @@
 build/
 dist/freelance_clock.exe
 dist/freelance_clock.iss
+freelance_clock.spec
