@@ -25,35 +25,32 @@ def start():
     global start_datehour
     global task_folder
     global label
-    if not master_folder:
-        master_folder = filedialog.askdirectory()
-    else:
-        if not running:
-            label = simpledialog.askstring(title="", prompt="What are you working on:")
-            if label:
-                start_datehour = datetime.datetime.now()
-                task_folder = master_folder + \
-                    f"/{label}-" + \
-                    f"{start_datehour.year}-" + \
-                    f"{str(start_datehour.month).zfill(2)}-" + \
-                    f"{str(start_datehour.day).zfill(2)}-" + \
-                    f"{str(start_datehour.hour).zfill(2)}-" + \
-                    f"{str(start_datehour.minute).zfill(2)}-" + \
-                    f"{str(start_datehour.second).zfill(2)}"
-        
-                try:
-                    os.mkdir(task_folder)
-                except:
-                    messagebox.showerror(
-                        title="Error!", 
-                        message="Something went wrong, try again."
-                    )
+    if not running:
+        label = simpledialog.askstring(title="", prompt="What are you working on:")
+        if label:
+            start_datehour = datetime.datetime.now()
+            task_folder = master_folder + \
+                f"/{label}-" + \
+                f"{start_datehour.year}-" + \
+                f"{str(start_datehour.month).zfill(2)}-" + \
+                f"{str(start_datehour.day).zfill(2)}-" + \
+                f"{str(start_datehour.hour).zfill(2)}-" + \
+                f"{str(start_datehour.minute).zfill(2)}-" + \
+                f"{str(start_datehour.second).zfill(2)}"
+    
+            try:
+                os.mkdir(task_folder)
+            except:
+                messagebox.showerror(
+                    title="Error!", 
+                    message="Something went wrong, try again."
+                )
 
-                pyautogui.screenshot().save(task_folder + f"/start.png")
+            pyautogui.screenshot().save(task_folder + f"/start.png")
 
-                running = True
-                button.config(text="stop", height=5, width=5, command=reset, font=('Arial', 30))
-                update()
+            running = True
+            button.config(text="stop", height=5, width=5, command=reset, font=('Arial', 30))
+            update()
         
 def reset():
     global running
@@ -70,18 +67,10 @@ def reset():
             csvfile.writerow(
                 [
                     label,
-                    start_datehour.year,
-                    start_datehour.month,
-                    start_datehour.day,
-                    start_datehour.hour,
-                    start_datehour.minute,
-                    start_datehour.second,
-                    end_datehour.year,
-                    end_datehour.month,
-                    end_datehour.day,
-                    end_datehour.hour,
-                    end_datehour.minute,
-                    end_datehour.second,
+                    f"{start_datehour.year}-{start_datehour.month}-{start_datehour.day}",
+                    f"{start_datehour.hour}:{start_datehour.minute}:{start_datehour.second}",
+                    f"{end_datehour.year}-{end_datehour.month}-{end_datehour.day}",
+                    f"{end_datehour.hour}:{end_datehour.minute}:{end_datehour.second}",
                     hours,
                     minutes,
                     seconds
@@ -110,7 +99,8 @@ def update():
 def set_folder():
     global master_folder
     master_folder = filedialog.askdirectory()
-    button.config(text="start", height=5, width=5, command=start, font=('Arial', 30))
+    if master_folder:
+        button.config(text="start", height=5, width=5, command=start, font=('Arial', 30))
 
 root = tk.Tk()
 root.geometry('450x70')

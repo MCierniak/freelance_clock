@@ -1,1 +1,5 @@
 .venv/
+*.code-workspace
+build/
+dist/freelance_clock.exe
+dist/freelance_clock.iss
