@@ -4,7 +4,7 @@ A simple time tracking app for freelancers.
 
 ## Download
 
-- **[Windows 10 x64 (v0.1)](https://github.com/MCierniak/freelance_clock/blob/master/dist/Freelance%20Clock%20Win10%20x64.exeraw=true "v0.1")**
+- **[Windows 10 x64 (v0.1)](https://github.com/MCierniak/freelance_clock/blob/master/dist/Freelance%20Clock%20Win10%20x64.exe?raw=true "v0.1")**
 
 ## Features
 
