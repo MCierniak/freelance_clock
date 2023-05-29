@@ -12,6 +12,8 @@ from PIL import ImageGrab
 from functools import partial
 ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
 
+# pyinstaller --onefile --windowed .\src\freelance_clock.py
+
 running = False
 hours, minutes, seconds = 0, 0, 0
 start_datehour, end_datehour = datetime.datetime.now(), datetime.datetime.now()
@@ -49,7 +51,7 @@ def start():
             pyautogui.screenshot().save(task_folder + f"/start.png")
 
             running = True
-            button.config(text="stop", height=5, width=5, command=reset, font=('Arial', 30))
+            button.config(text="stop", height=1, width=7, command=reset, font=('Arial', 20))
             update()
         
 def reset():
@@ -77,7 +79,7 @@ def reset():
                 ]
             )
         running = False
-        button.config(text="start", height=5, width=5, command=start, font=('Arial', 30))
+        button.config(text="start", height=1, width=7, command=start, font=('Arial', 20))
     hours, minutes, seconds = 0, 0, 0
     stopwatch_label.config(text='00:00:00')
 
@@ -100,16 +102,16 @@ def set_folder():
     global master_folder
     master_folder = filedialog.askdirectory()
     if master_folder:
-        button.config(text="start", height=5, width=5, command=start, font=('Arial', 30))
+        button.config(text="start", height=1, width=7, command=start, font=('Arial', 20))
 
 root = tk.Tk()
-root.geometry('450x70')
+# root.geometry('340x90')
 root.title('Freelance Clock')
 
-stopwatch_label = tk.Label(text='00:00:00', font=('Arial', 60))
-stopwatch_label.pack(side=tk.LEFT)
-button = tk.Button(text='set folder', height=5, width=7, font=('Arial', 20), command=set_folder)
-button.pack(side=tk.RIGHT)
+stopwatch_label = tk.Label(text='00:00:00', font=('Arial', 40))
+stopwatch_label.pack(side=tk.LEFT, padx=5, pady=5)
+button = tk.Button(text='set folder', height=1, width=7, font=('Arial', 20), command=set_folder)
+button.pack(side=tk.RIGHT, padx=5, pady=5)
 
 root.attributes('-topmost', True)
 root.resizable(0,0)
